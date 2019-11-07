@@ -1,1 +1,3 @@
 Django
+boto
+django-storages
