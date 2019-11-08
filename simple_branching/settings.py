@@ -20,12 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1qt37o01f17jzf5pm9t1c529#9(x$m0&8u46ev(3gwfdef66%$'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', default='True') == 'True'
 
-ALLOWED_HOSTS = []
+# 'ALLOWED_HOSTS' should be a single string of hosts with a space
+# between each.
+# For example: 'ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -81,9 +84,9 @@ WSGI_APPLICATION = 'simple_branching.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'simple_branching_db',
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'NAME': os.getenv("SQL_DB"),
+        'USER': os.getenv("SQL_USER"),
+        'PASSWORD': os.getenv("SQL_PASSWORD"),
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
