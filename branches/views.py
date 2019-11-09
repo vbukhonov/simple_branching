@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from django.views.generic import DetailView
+from django.views.generic.list import ListView
 
-# Create your views here.
+from branches.models import Branch
+
+
+class BranchListView(ListView):
+    model = Branch
+
+
+class BranchDetailView(DetailView):
+    model = Branch

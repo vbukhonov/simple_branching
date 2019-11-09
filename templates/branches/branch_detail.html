@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Branch {{ object.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <table>
+        <tr>
+            <td><img src="{{ object.facade.url }}" height="100", width="100"></td>
+        </tr>
+        <tr>
+            <td>{{ object.latitude }}</td>
+            <td>{{ object.longitude }}</td>
+        </tr>
+    </table>
+{% endblock %}
