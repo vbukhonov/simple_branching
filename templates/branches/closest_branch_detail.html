@@ -3,16 +3,10 @@
 {% block title %}Branch {{ branch.name }}{% endblock %}
 
 {% block content %}
-    {% if branch %}
-        <h1>{{ branch.name }}</h1> is closest to coordinates {{ lan }}, {{ lgt }}.
-        <table>
-            <tr>
-                <td><img src="{{ branch.facade.url }}" height="100", width="100"></td>
-            </tr>
-            <tr>
-                <td>{{ branch.latitude }}</td>
-                <td>{{ branch.longitude }}</td>
-            </tr>
-
+    {% if object %}
+        <h1>This branch is the closest to coordinates {{ lat }}, {{ lng }}.</h1>
+        {% include "branches/branch_detail.html" %}
+    {% else %}
+        <h1>There are no branches in DB yet.</h1>
     {% endif %}
 {% endblock %}

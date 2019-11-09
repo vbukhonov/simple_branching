@@ -17,17 +17,17 @@ class BranchDetailView(DetailView):
 
 
 def get_closest_branch(request, lat, lng):
-    lat = Decimal(lat)
-    lng = Decimal(lng)
+    dec_lat = Decimal(lat)
+    dec_lng = Decimal(lng)
     closest_branch = Branch.objects.all().first()
     if closest_branch is not None:
         min_dist = get_dist_between_points(
-            coordinates_1=(lat, lng),
+            coordinates_1=(dec_lat, dec_lng),
             coordinates_2=(closest_branch.latitude, closest_branch.longitude),
         )
         for branch in Branch.objects.all():
             current_dist = get_dist_between_points(
-                coordinates_1=(lat, lng),
+                coordinates_1=(dec_lat, dec_lng),
                 coordinates_2=(branch.latitude, branch.longitude),
             )
             if current_dist < min_dist:
@@ -36,5 +36,5 @@ def get_closest_branch(request, lat, lng):
     return render(
         request,
         "branches/closest_branch_detail.html",
-        {"branch": closest_branch, "lat": lat, "lng": lng},
+        {"object": closest_branch, "lat": lat, "lng": lng},
     )
