@@ -23,7 +23,6 @@ class BranchForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         self.fields["available_employees"].initial.update(branch=None)
-        selected_employees = self.cleaned_data.pop("available_employees")
         branch_instance = Branch()
         branch_instance.pk = self.instance.pk
         branch_instance.name = self.instance.name
@@ -31,5 +30,5 @@ class BranchForm(forms.ModelForm):
         branch_instance.latitude = self.instance.latitude
         branch_instance.longitude = self.instance.longitude
         branch_instance.save()
-        selected_employees.update(branch=branch_instance)
+        self.cleaned_data["available_employees"].update(branch=branch_instance)
         return branch_instance
