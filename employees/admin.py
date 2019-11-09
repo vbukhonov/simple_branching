@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from employees.models import Employee
+
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_filter = ("first_name", "last_name")
