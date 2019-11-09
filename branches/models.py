@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from branches.utils import upload_facade_to
@@ -24,3 +25,6 @@ class Branch(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("branch-detail", kwargs={"pk": self.pk})
