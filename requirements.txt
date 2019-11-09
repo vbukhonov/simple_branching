@@ -1,4 +1,6 @@
 boto3
 Django
 django-storages
+django-geoposition
 psycopg2
+Pillow
