@@ -20,6 +20,7 @@ class Branch(models.Model):
 
     class Meta:
         verbose_name_plural = "branches"
+        permissions = [("edit_coordinates", "Can edit coordinates")]
 
     def __str__(self):
         return self.name

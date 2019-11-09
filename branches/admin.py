@@ -36,6 +36,14 @@ class BranchAdmin(admin.ModelAdmin):
                 "js/admin/location_picker.js",
             )
 
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super(BranchAdmin, self).get_fieldsets(request, obj)
+        if not request.user.has_perm("branches.edit_coordinates"):
+            self.fieldsets = (
+                (None, {"fields": ("name", "facade", "available_employees")}),
+            )
+        return fieldsets
+
     def current_employees(self, obj):
         employees = obj.employees.all().order_by("last_name")
         if employees.count() > 2:
