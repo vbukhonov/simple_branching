@@ -147,3 +147,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # Google Maps settings
 GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
