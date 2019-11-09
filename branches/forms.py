@@ -22,6 +22,7 @@ class BranchForm(forms.ModelForm):
         pass
 
     def save(self, *args, **kwargs):
+        self.fields["available_employees"].initial.update(branch=None)
         selected_employees = self.cleaned_data.pop("available_employees")
         branch_instance = Branch()
         branch_instance.pk = self.instance.pk
