@@ -6,7 +6,11 @@
     <h1>Branches</h1>
     <ul>
         {% for branch in object_list %}
-            <li><a href="{% url 'branch-detail' branch.pk %}">{{ branch.name }}</li>
+            <li>
+                <a href="{% url 'branch-detail' branch.pk %}">
+                    {{ branch.name }}
+                </a>
+            </li>
         {% empty %}
             <li>No branches yet.</li>
         {% endfor %}
