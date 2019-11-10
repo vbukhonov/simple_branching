@@ -1,1 +1,5 @@
+boto3
 Django
+django-storages
+psycopg2
+Pillow

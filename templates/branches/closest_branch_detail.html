@@ -1,0 +1,14 @@
+
+    {% if object %}
+        {% include "branches/branch_detail.html" %}
+        {% block additional_info %}
+            <h1>
+                This branch is the closest to coordinates {{ lat }}, {{ lng }}.
+            </h1>
+        {% endblock %}
+    {% else %}
+        {% block title %}No branches{% endblock %}
+        {% block content %}
+            <h1>There are no branches in DB yet.</h1>
+        {% endblock %}
+    {% endif %}
