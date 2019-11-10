@@ -14,10 +14,17 @@ class EmployeeListView(ListView):
         order_by_fields = self.request.GET.get("order_by_fields", None)
         if order_by_fields:
             order_by_fields = order_by_fields.split(",")
-            if set(order_by_fields).issubset(
-                set([field.name for field in Employee._meta.fields])
-            ):
-                new_context = new_context.order_by(*order_by_fields)
+            checked_fields = []
+            employee_field_names = set([field.name for field in Employee._meta.fields])
+            for field_name in order_by_fields:
+                if field_name in employee_field_names:
+                    checked_fields.append(field_name)
+                else:
+                    if "__" in field_name:
+                        related_field_name_parts = field_name.split("__")
+                        if related_field_name_parts[0] in employee_field_names:
+                            checked_fields.append(field_name)
+            new_context = new_context.order_by(*checked_fields)
         return new_context
 
     def get_context_data(self, *, object_list=None, **kwargs):
