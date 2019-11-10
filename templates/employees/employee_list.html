@@ -6,6 +6,13 @@
     <h1>
         Employees {% if branch_name %}in branch {{ branch_name }}.{% endif %}
     </h1>
+    <h2>
+        {% if order_by_fields %}
+            Ordered by: {{ order_by_fields }}
+        {% else %}
+            No ordering is applied.
+        {% endif %}
+    </h2>
     <ul>
         {% for employee in object_list %}
             <li>
