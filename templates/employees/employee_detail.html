@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Employee {{ object.last_name }}{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>{{ object.last_name }}</td>
+            <td>{{ object.first_name }}</td>
+        </tr>
+        <tr>
+            <td>{{ object.position_title }}</td>
+            <td>{{ object.branch.name }}</td>
+        </tr>
+    </table>
+{% endblock %}

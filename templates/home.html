@@ -3,5 +3,12 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-    <a href="{% url 'branch-list' %}">Branches</a>
+    <table>
+        <tr>
+            <td><a href="{% url 'branch-list' %}">Branches</a></td>
+        </tr>
+        <tr>
+            <td><a href="{% url 'employee-list' %}">Employees</a></td>
+        </tr>
+    </table>
 {% endblock %}

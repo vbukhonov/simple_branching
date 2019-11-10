@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
-# Create your views here.
+from employees.models import Employee
+
+
+class EmployeeListView(ListView):
+    model = Employee
+
+
+class EmployeeDetailView(DetailView):
+    model = Employee
