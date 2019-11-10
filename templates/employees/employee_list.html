@@ -3,7 +3,9 @@
 {% block title %}Employees{% endblock %}
 
 {% block content %}
-    <h1>Employees</h1>
+    <h1>
+        Employees {% if branch_name %}in branch {{ branch_name }}.{% endif %}
+    </h1>
     <ul>
         {% for employee in object_list %}
             <li>
