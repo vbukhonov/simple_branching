@@ -15,7 +15,8 @@ def forward_function(apps, schema_editor):
             last_name="mock_l_Employee_{}".format(i),
             position_title="mock_SDE_{}".format(i % 9 + 1),
             branch=Branch.objects.objects.using(db_alias).filter(
-                name__startswith="mock_", name__endswith=random.randint(1, 10)
+                name__startswith="mock_",
+                name__endswith="{}".format(random.randint(1, 10)),
             ),
         )
         for i in range(10000)
